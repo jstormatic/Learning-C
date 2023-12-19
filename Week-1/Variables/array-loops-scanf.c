@@ -8,7 +8,7 @@ int main(void) {
 
     int i = 0;
     while (i < ARRAY_SIZE) {
-        printf("Enter your icecreams for day %d: ", i);
+        printf("Enter your icecreams for day %d: ", i + 1);
         scanf("%d", &ice_cream_per_day[i]);
         i++;
     }
