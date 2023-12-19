@@ -1,20 +1,23 @@
 #include <stdio.h>
 
-#define ARRAY_SIZE 7
+
 
 int main(void) {
 
-    int ice_cream_per_day[ARRAY_SIZE];
+    int size;
+    printf("How many days did you want to keep track off? ");
+    scanf("%d", &size);
+    int ice_cream_per_day[size];
 
     int i = 0;
-    while (i < ARRAY_SIZE) {
+    while (i < size) {
         printf("Enter your icecreams for day %d: ", i + 1);
         scanf("%d", &ice_cream_per_day[i]);
         i++;
     }
 
     i = 0;
-    while (i < ARRAY_SIZE) {
+    while (i < size) {
         printf("%d\n", ice_cream_per_day[i]);
         i++;
     }
