@@ -6,7 +6,7 @@ void double_int(int *int_to_double) {
 
 int main(void) {
 
-    int data[5] = {1, 2, 3, 4, 5};
+    int data[5] = {1, 2, 3, 4, 5, 6};
 
     printf("%p\n", data);
     printf("%d\n", *data);
