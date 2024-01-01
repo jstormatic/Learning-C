@@ -26,6 +26,7 @@ int main(void) {
     // print_array(numbers_ptr, size);
     reverse_array(numbers_ptr, size);
 
+    free(numbers_ptr);
 
     return 0;
 }
