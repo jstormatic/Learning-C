@@ -9,6 +9,7 @@ struct node {
 
 struct node *create_node(int data, struct node *next);
 void print_list(struct node *head);
+struct node *insert_at_tail(int data, struct node *head);
 
 int main(void) {
 
@@ -20,16 +21,17 @@ int main(void) {
 
     print_list(head);
 
+    insert_at_tail( 12, head);
+    print_list(head);
     return 0;
 
 }
 
 struct node *create_node(int data, struct node *next) {
     struct node *new = malloc(sizeof(struct node));
+
     new->data = data;
     new->next = next; 
-
-    return new;
 }
 
 void print_list(struct node *head) {
@@ -38,6 +40,17 @@ void print_list(struct node *head) {
     struct node *current = head;
     while (current != NULL) {
         printf("%d\n", current->data);
+        current = current->next; // Would be similar to incrementing i, (i++)
+    }
+}
+
+struct node *insert_at_tail(int data, struct node *head) {
+    struct node *current = head;
+    while (current->next != NULL) {
         current = current->next;
     }
+
+    current->next = create_node(data, NULL);
+
+    return head;
 }
