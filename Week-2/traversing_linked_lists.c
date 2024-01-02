@@ -8,6 +8,7 @@ struct node {
 };
 
 struct node *create_node(int data, struct node *next);
+void print_list(struct node *head);
 
 int main(void) {
 
@@ -16,6 +17,8 @@ int main(void) {
 
     head = create_node(8, head);
     head = create_node(11, head);
+
+    print_list(head);
 
     return 0;
 
@@ -28,3 +31,12 @@ struct node *create_node(int data, struct node *next) {
     new-> next = next; 
 }
 
+void print_list(struct node *head) {
+    printf("The linked list: \n");
+
+    struct node *current = head;
+    while (current != NULL) {
+        printf("%d\n", current->data);
+        current = current->next; // Would be similar to incrementing i, (i++)
+    }
+}
