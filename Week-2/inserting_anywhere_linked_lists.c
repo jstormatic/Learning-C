@@ -84,11 +84,18 @@ int size_Linked_list(struct node *head) {
 
 struct node *insert_at_location(int data, int location, struct node *head) {
 
+
+    if (head == NULL) {
+        return head;
+    }
+
+
+
     struct node *current = head;
 
     int counter = 1;
 
-    while (current->next != NULL) {
+    while (current != NULL) {
         if (counter == location) {
 
             struct node *new_node = create_node(data, NULL);
