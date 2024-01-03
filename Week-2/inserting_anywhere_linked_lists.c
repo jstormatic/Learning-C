@@ -14,6 +14,9 @@ struct node *insert_at_tail(int data, struct node *head);
 // Function to find the size of the list
 int size_Linked_list(struct node *head);
 
+// Function to insert at a given location
+struct node *insert_at_location(int data, int location, struct node *head);
+
 int main(void) {
 
     // struct node *head = malloc(sizeof(struct node));
@@ -24,6 +27,8 @@ int main(void) {
 
     print_list(head);
     printf("The size of the list is %d\n", size_Linked_list(head));
+
+    insert_at_location( 13, 2, head);
 
     insert_at_tail( 12, head);
     print_list(head);
@@ -75,4 +80,32 @@ int size_Linked_list(struct node *head) {
     }
 
     return size;
+}
+
+struct node *insert_at_location(int data, int location, struct node *head) {
+
+    struct node *current = head;
+
+    int counter = 1;
+
+    while (current->next != NULL) {
+        if (counter == location) {
+
+            struct node *new_node = create_node(data, NULL);
+
+            new_node->next = current->next;
+
+            current->next = new_node;
+
+        }
+
+        counter++;
+
+        current = current->next;
+
+    }
+
+    return head;
+
+
 }
