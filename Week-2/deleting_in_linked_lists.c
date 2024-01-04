@@ -20,6 +20,8 @@ struct node *insert_at_location(int data, int location, struct node *head);
 // Function to delete from the tail
 struct node *delete_node_from_tail(struct node *head);
 
+struct node *delete_at_pos(struct node *head, int pos);
+
 int main(void) {
 
     // struct node *head = malloc(sizeof(struct node));
@@ -35,6 +37,8 @@ int main(void) {
     insert_at_tail( 12, head);
     print_list(head);
     head = delete_node_from_tail(head);
+    print_list(head);
+    head = delete_at_pos(head, 2);
     print_list(head);
     return 0;
 
@@ -153,4 +157,38 @@ struct node *delete_node_from_tail(struct node *head) {
 
     return head;
 
+}
+
+
+struct node *delete_at_pos(struct node *head, int pos) {
+    struct node *current = head;
+    struct node *previous = NULL;
+    if (head == NULL) {
+        return head;
+    }
+    int counter = 1;
+    // Go to the final node
+    while (current->next != NULL) {
+
+        // The traversal
+        previous = current;
+        current = current->next;
+        if (counter == pos) {
+            
+            if (previous == NULL) {
+                head = NULL;
+            } else {
+                if (current != NULL) {
+                    previous->next = current->next;
+                } else {
+                    previous->next = NULL;
+                }
+                
+            }
+            free(current);
+            return head;
+        }
+        counter++;
+    }
+    return head;
 }
