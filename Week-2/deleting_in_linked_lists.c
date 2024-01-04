@@ -127,21 +127,24 @@ struct node *insert_at_location(int data, int location, struct node *head) {
 struct node *delete_node_from_tail(struct node *head) {
 
     struct node *current = head;
+    struct node *previous = NULL;
 
     if (head == NULL) {
         return head;
     }
 
-    while (current->next->next != NULL) {
+    // Go to the final node
+    while (current->next != NULL) {
 
         // The traversal
+        previous = current;
         current = current->next;
     }
 
-    // The current is the second last node
+    // The current is the last node
     // Have to free the node otherwise memory leaks will occur since it'll be lost afterwards
-    free(current->next);
-    current->next = NULL;
+    free(current);
+    previous->next = NULL;
 
     return head;
 
