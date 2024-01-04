@@ -34,7 +34,7 @@ int main(void) {
     insert_at_location( 13, 2, head);
     insert_at_tail( 12, head);
     print_list(head);
-    delete_node_from_tail(head);
+    head = delete_node_from_tail(head);
     print_list(head);
     return 0;
 
@@ -144,7 +144,12 @@ struct node *delete_node_from_tail(struct node *head) {
     // The current is the last node
     // Have to free the node otherwise memory leaks will occur since it'll be lost afterwards
     free(current);
-    previous->next = NULL;
+    if (previous == NULL) {
+        head = NULL;
+    } else {
+        previous->next = NULL;
+    }
+    
 
     return head;
 
