@@ -32,8 +32,9 @@ int main(void) {
     printf("The size of the list is %d\n", size_Linked_list(head));
 
     insert_at_location( 13, 2, head);
-
     insert_at_tail( 12, head);
+    print_list(head);
+    delete_node_from_tail(head);
     print_list(head);
     return 0;
 
@@ -51,9 +52,11 @@ void print_list(struct node *head) {
 
     struct node *current = head;
     while (current != NULL) {
-        printf("%d\n", current->data);
+        printf("%d -> ", current->data);
         current = current->next; // Would be similar to incrementing i, (i++)
     }
+
+    printf("NULL\n");
 }
 
 struct node *insert_at_tail(int data, struct node *head) {
