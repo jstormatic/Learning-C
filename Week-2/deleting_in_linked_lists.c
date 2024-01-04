@@ -166,13 +166,11 @@ struct node *delete_at_pos(struct node *head, int pos) {
     if (head == NULL) {
         return head;
     }
-    int counter = 1;
+    int counter = 0;
     // Go to the final node
     while (current->next != NULL) {
 
-        // The traversal
-        previous = current;
-        current = current->next;
+        
         if (counter == pos) {
             
             if (previous == NULL) {
@@ -188,6 +186,10 @@ struct node *delete_at_pos(struct node *head, int pos) {
             free(current);
             return head;
         }
+
+        // The traversal
+        previous = current;
+        current = current->next;
         counter++;
     }
     return head;
