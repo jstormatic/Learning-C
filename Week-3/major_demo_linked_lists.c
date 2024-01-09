@@ -25,6 +25,8 @@ struct node *delete_at_pos(struct node *head, int pos);
 
 struct node *weave_lists(struct node *head_1, struct node *head_2);
 
+struct node *take_max_of_pair(struct node *head_1, struct node *head_2);
+
 int main(int argc, char *argv[]) {
 
     //  Create an empty linked list pointer
@@ -188,5 +190,32 @@ struct node *weave_lists(struct node *head_1, struct node *head_2) {
         current_2 = current_2->next;
     }
 
+    return result;
+}
+
+
+// Iterate over two linked lists in pairs
+// Create a new linked lilst with the larger of two pairs
+// Always the same size
+struct node *take_max_of_pair(struct node *head_1, struct node *head_2) {
+
+    struct node *current_1 = head_1;
+    struct node *current_2 = head_2;
+
+    struct node *result = NULL;
+
+    // While there is data in both pairs of linked lists
+    // As soon as one list is null, stop looping
+    while (current_1 != NULL && current_2 != NULL) {
+        if (current_1->data >= current_2->data) {
+            result = insert_at_tail(current_1->data, result);
+        } else {
+            // else, result_2 has the larger value, so add it instead
+            result = insert_at_tail(current_2->data, result);
+        }
+
+        current_1 = current_1->next;
+        current_2 = current_2->next;
+    }
     return result;
 }
