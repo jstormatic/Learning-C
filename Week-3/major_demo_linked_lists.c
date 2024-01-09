@@ -177,5 +177,16 @@ struct node *weave_lists(struct node *head_1, struct node *head_2) {
 
     current_1 = current_1->next;
     current_2 = current_2->next;
+
+    while (current_1 != NULL) {
+        result = insert_at_tail(current_1->data, result);
+        current_1 = current_1->next;
+    }
+
+    while (current_2 != NULL) {
+        result = insert_at_tail(current_2->data, result);
+        current_2 = current_2->next;
+    }
+
     return result;
 }
