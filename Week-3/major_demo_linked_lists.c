@@ -23,6 +23,8 @@ struct node *delete_node_from_tail(struct node *head);
 
 struct node *delete_at_pos(struct node *head, int pos);
 
+struct node *weave_lists(struct node *head_1, struct node *head_2);
+
 int main(int argc, char *argv[]) {
 
     //  Create an empty linked list pointer
@@ -157,4 +159,23 @@ struct node *delete_at_pos(struct node *head, int pos) {
         counter++;
     }
     return head;
+}
+
+
+struct node *weave_lists(struct node *head_1, struct node *head_2) {
+
+    
+    struct node *current_1 = head_1;
+    struct node *current_2 = head_2;
+
+    struct node *result = NULL;
+
+    while (current_1 != NULL && current_2 != NULL) {
+        result = insert_at_tail(current_1->data, result);
+        result = insert_at_tail(current_2->data, result);
+    }
+
+    current_1 = current_1->next;
+    current_2 = current_2->next;
+    return result;
 }
